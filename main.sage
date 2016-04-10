@@ -1,6 +1,6 @@
 load("1_5.sage")
 load("1_6.sage")
-
+load("2.sage")
 
 ########################## Question 1.1 ##########################
 print('########################## Question 1.1 ##########################\n')
@@ -22,7 +22,6 @@ print("Temps de calcul de 10^(10^8)")
 time a=10^(10^8)
 # print("Temps de calcul de 10^(10^9)")
 # time a=10^(10^9)
-
 
 ########################## Question 1.2 ##########################
 print('\n\n########################## Question 1.2 ##########################\n')
@@ -60,6 +59,18 @@ print("Nombre de chiffres de 100!! en base 10 : {}".format(nbDigitsFactBase10(fa
 ########################## Question 1.6 ##########################
 print('\n\n########################## Question 1.6 ##########################\n')
 print("Nombre de chiffres de 100!! en base 2 : {}".format(nbDigitsFactBase2(factorial(100))))
+
+########################## Question 2 ##########################
+print('\n\n########################## Question 2 ##########################\n')
+data = [5, 10, 25, 50, 500, 1000]
+for i in data:
+	gcd, iterations = euclideanAlgorithm(fibonacci(i + 1), fibonacci(i))
+	print("PGCD(fibonacci({}), fibonacci({})) = {} : obtenu en {} itération(s) via l'algorithme d'Euclide.".format(i + 1, i, gcd, iterations))
+gcd, iterations = euclideanAlgorithm(29753, 4578)
+print("PGCD({}, {}) = {} : obtenu en {} itération(s) via l'algorithme d'Euclide.".format(29753, 4578, gcd, iterations))
+data = [9, 8]
+for i in data:
+	print("fibonacci({}) = {}".format(i, fibonacci(i)))
 
 ###################################
 ###################################
