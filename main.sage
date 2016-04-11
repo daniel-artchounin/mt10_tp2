@@ -72,6 +72,16 @@ data = [9, 8]
 for i in data:
 	print("fibonacci({}) = {}".format(i, fibonacci(i)))
 
+########################## Question 3.1 ##########################
+print('\n\n########################## Question 3.1 ##########################\n')
+data = [389, 3000, 2, 1]
+for i in data:
+	iIsPrime = is_prime(i)
+	if iIsPrime:
+		print("{} est un nombre premier.".format(i))
+	else:
+		print("{} n'est pas un nombre premier.".format(i))
+
 ###################################
 ###################################
 ###################################
