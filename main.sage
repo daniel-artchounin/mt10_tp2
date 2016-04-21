@@ -82,6 +82,34 @@ for i in data:
 	else:
 		print("{} n'est pas un nombre premier.".format(i))
 
+print("")
+
+listParameters = [[10], [7], [2000, 2020], [2, 2], [2, 3], [5, 10]]
+for parameter in listParameters:
+ 	if len(parameter) == 1:
+ 		print("Nombre premiers strictement inférieurs à {} : {}".format(parameter[0], prime_range(*parameter)))
+ 	else:
+ 		print("Nombre premiers entre {} et {} (exclus) : {}".format(parameter[0], parameter[1], prime_range(*parameter)))
+
+print("")
+
+data = [-200, 0, 2, 3, 4, 5, 2004]
+for i in data:
+	print("'Premier' nombre premier strictement supérieur à {} : {}".format(i, next_prime(i)))
+
+print("")
+
+data = [2, 5, 17, 35, 133, 500, 1000]
+for i in data:
+	print("Décomposition unique en produit de nombres premiers de {} : {}".format(i, factor(i)))
+
+print("")
+
+data = [3.5, 7, 100, 500, 509, 1000, 100000]
+for i in data:
+	print("Nombre de nombres premiers inférieurs ou égaux à {} : {}".format(i, prime_pi(i)))
+
+
 ###################################
 ###################################
 ###################################
