@@ -1,6 +1,7 @@
 load("1_5.sage")
 load("1_6.sage")
 load("2.sage")
+load("3_2.sage")
 
 ########################## Question 1.1 ##########################
 print('########################## Question 1.1 ##########################\n')
@@ -72,6 +73,9 @@ data = [9, 8]
 for i in data:
 	print("fibonacci({}) = {}".format(i, fibonacci(i)))
 
+########################## Question 3 ##########################
+print('\n\n########################## Question 3 ##########################\n')
+
 ########################## Question 3.1 ##########################
 print('\n\n########################## Question 3.1 ##########################\n')
 data = [389, 3000, 2, 1]
@@ -109,6 +113,10 @@ data = [3.5, 7, 100, 500, 509, 1000, 100000]
 for i in data:
 	print("Nombre de nombres premiers inférieurs ou égaux à {} : {}".format(i, prime_pi(i)))
 
+########################## Question 3.2 ##########################
+print('\n\n########################## Question 3.2 ##########################\n')
+results = findANotPrimeFermatNumber()
+print("Le premier nombre de Fermat non premier est F{} = {}.".format(results[0], results[1]))
 
 ###################################
 ###################################

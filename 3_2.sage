@@ -1,11 +1,10 @@
-def nombre_fermat():
-	bool_prime = True
+def findANotPrimeFermatNumber():
+	prime = True
 	n = 0
-	while(bool_prime):
-		if not is_prime(2^(2^ n)+1):
-			bool_prime = False
-			return n
-		else :
+	while(prime):
+		fN = 2^(2^n) + 1
+		if not is_prime(fN):
+			prime = False
+			return n, fN
+		else:
 			n += 1
-
-print nombre_fermat()
