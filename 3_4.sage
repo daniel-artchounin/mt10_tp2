@@ -1,8 +1,14 @@
 #Question 1
 # Après prime_pi de 10^12 il plante
-#a = plot(prime_pi, 0, 100) + plot(x/ln(x), 0, 100); a
 
-def function(x):
-	return prime_pi(x) * x/ln(x)
+#def function(x):
+#	return prime_pi(x)
+#def function2(x):
+#	return x/ln(x)
+#a = plot(function, 0, 10^5) + plot(function2, 0, 10^5); a
+#show(a)
 
-show(plot(function, 0, 100))
+def function3(x):
+	return ln(x)/x * prime_pi(x)
+
+show(plot(function3, 0, 10^11))

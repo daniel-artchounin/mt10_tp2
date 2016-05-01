@@ -134,7 +134,7 @@ for cle, valeur in results.items():
 print('\n\n########################## Question 3.3.2 ##########################\n')
 print("La liste des nombres de Mersenne et premiers inférieurs à 257 est la suivante :")
 results = nombre_prime_mersenne()
-#results = sorted(results)
 for cle, valeur in results.items():
-	print("p={} : Mp={} \t".format(cle, valeur))
+	print cle	
+	#print("p={} : Mp={} \t".format(cle, valeur))
 
