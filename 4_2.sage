@@ -27,13 +27,13 @@ def recursiveDichotomicPow(x, n):
 	"""
 	if n > 0:
 		if n % 2 == 0:
-			return recursivePow(x^2, n/2)
+			return recursiveDichotomicPow(x^2, n/2)
 		else:
-			return x * recursivePow(x^2, (n-1)/2)
+			return x * recursiveDichotomicPow(x^2, (n-1)/2)
 	elif n < 0:
 		if n % 2 == 0:
-			return recursivePow(x^2, n/2)
+			return recursiveDichotomicPow(x^2, n/2)
 		else:
-			return x^(-1) * recursivePow(x^2, (n+1)/2)
+			return x^(-1) * recursiveDichotomicPow(x^2, (n+1)/2)
 	else:
-		return 1	
+		return x^0	

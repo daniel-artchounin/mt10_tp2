@@ -33,13 +33,13 @@ def modularRecursiveExponentiation(x, n, N):
 	x = mod(x, N)
 	if n > 0:
 		if n % 2 == 0:
-			return mod( recursivePow(x^2, n/2), N )
+			return mod( modularRecursiveExponentiation(x^2, n/2), N )
 		else:
-			return mod( x * recursivePow(x^2, (n-1)/2 ), N )
+			return mod( x * modularRecursiveExponentiation(x^2, (n-1)/2 ), N )
 	elif n < 0:
 		if n % 2 == 0:
-			return mod( recursivePow(x^2, n/2), N )
+			return mod( modularRecursiveExponentiation(x^2, n/2), N )
 		else:
-			return mod( x^(-1) * recursivePow(x^2, (n+1)/2) , N)
+			return mod( x^(-1) * modularRecursiveExponentiation(x^2, (n+1)/2) , N)
 	else:
-		return 1
+		return x^0

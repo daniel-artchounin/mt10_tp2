@@ -22,4 +22,4 @@ def recursivePow(x, n):
 	elif n < 0:
 		return x^(-1) * recursivePow(x, n+1)
 	else:
-		return 1	
+		return x^0	
