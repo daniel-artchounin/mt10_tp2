@@ -14,7 +14,7 @@ def iterativePow(x, n):
 def recursivePow(x, n):	
 	"""This function returns the value of x to the power of n (x^n).
 
-	This function uses an iterative algorithm.
+	This function uses a recursive algorithm.
 
 	"""
 	if n > 0:
