@@ -3,6 +3,10 @@ load("1_6.sage")
 load("2.sage")
 load("3_2.sage")
 load("3_3.sage")
+load("4_1.sage")
+load("4_2.sage")
+load("4_3.sage")
+load("4_4.sage")
 
 ########################## Question 1.1 ##########################
 print('########################## Question 1.1 ##########################\n')
@@ -124,12 +128,14 @@ print('\n\n########################## Question 3.3.1 ##########################\
 print("La liste des nombres premiers inférieurs à 257 est la suivante :")
 results = nombre_prime()
 for value in results:
-	print("{}\t".format(value))
+	print("{}".format(value))
+
+print("")
 
 print("La liste des nombres de Mersenne inférieurs à 257 est la suivante :")
 results = nombre_mersenne()
 for cle, valeur in results.items():
-	print("p={} : Mp={} \t".format(cle, valeur))
+	print("p={} : Mp={}".format(cle, valeur))
 
 print('\n\n########################## Question 3.3.2 ##########################\n')
 print("La liste des nombres de Mersenne et premiers inférieurs à 257 est la suivante :")
@@ -138,3 +144,47 @@ for cle, valeur in results.items():
 	print cle	
 	#print("p={} : Mp={} \t".format(cle, valeur))
 
+########################## Question 4.1 ##########################
+print('\n\n########################## Question 4.1 ##########################\n')
+bases = [-5, 7] 
+exponents = [-64, -15, 0, 13, 79]
+for x in bases:
+	for n in exponents:
+		print("{}^({}) = {}".format(x, n, x^(n)))
+		print("iterativePow({}, {}) = {}".format(x, n, iterativePow(x, n)))
+		print("recursivePow({}, {}) = {}".format(x, n, recursivePow(x, n)))
+		print("")
+
+########################## Question 4.2 ##########################
+print('\n\n########################## Question 4.2 ##########################\n')
+bases = [-5, 7] 
+exponents = [-64, -15, 0, 13, 79]
+for x in bases:
+	for n in exponents:
+		print("{}^({}) = {}".format(x, n, x^(n)))
+		print("iterativeDichotomicPow({}, {}) = {}".format(x, n, iterativeDichotomicPow(x, n)))
+		print("recursiveDichotomicPow({}, {}) = {}".format(x, n, recursiveDichotomicPow(x, n)))
+		print("")
+
+########################## Question 4.3 ##########################
+print('\n\n########################## Question 4.3 ##########################\n')
+bases = [-5, 7] 
+exponents = [0, 13, 79]
+moduli = [7, 17]
+for modulus in moduli:
+	for x in bases:
+		for n in exponents:		
+			print("mod({}^({}), {}) = {}".format(x, n, modulus, mod(x^(n), modulus)))
+			print("modularIterativeExponentiation({}, {}, {}) = {}".format(x, n, modulus, modularIterativeExponentiation(x, n, modulus)))
+			print("modularRecursiveExponentiation({}, {}, {}) = {}".format(x, n, modulus, modularRecursiveExponentiation(x, n, modulus)))
+			print("")
+
+
+########################## Question 4.4 ##########################
+print('\n\n########################## Question 4.4 ##########################\n')
+indexes = [-57, -13, 0, 17, 65]
+for n in indexes:		
+	print("fibonacci({}) = {}".format(n, fibonacci(n)))
+	print("fibonacciUsingExponentiation({}) = {}".format(n, fibonacciUsingExponentiation(n)))
+	print("fibonacciUsingRecursiveDichotomicPow({}) = {}".format(n, fibonacciUsingRecursiveDichotomicPow(n)))
+	print("")
