@@ -3,6 +3,7 @@ load("1_6.sage")
 load("2.sage")
 load("3_2.sage")
 load("3_3.sage")
+load("3_4.sage")
 load("4_1.sage")
 load("4_2.sage")
 load("4_3.sage")
@@ -125,24 +126,49 @@ print("Le premier nombre de Fermat non premier est F{} = {}.".format(results[0],
 
 ########################## Question 3.3 ##########################
 print('\n\n########################## Question 3.3.1 ##########################\n')
-print("La liste des nombres premiers inférieurs à 257 est la suivante :")
-results = nombre_prime()
-for value in results:
-	print("{}".format(value))
+primeNumbers = prime_range(258)
+print("Nombre de nombres premiers inférieurs ou égaux à 257 : {}".format(len(primeNumbers)))
+print("La liste des nombres premiers inférieurs ou égaux à 257 est la suivante :")
+for p in primeNumbers:
+	print("{}".format(p))
 
 print("")
 
-print("La liste des nombres de Mersenne inférieurs à 257 est la suivante :")
-results = nombre_mersenne()
-for cle, valeur in results.items():
-	print("p={} : Mp={}".format(cle, valeur))
+print("La liste des nombres de Mersenne tels que leurs indices soient inférieurs ou égaux à 257 est la suivante :")
+results = mersenneNumbers(primeNumbers)
+for p, mP in results:
+	print("M_{}={}".format(p, mP))
 
 print('\n\n########################## Question 3.3.2 ##########################\n')
 print("La liste des nombres de Mersenne et premiers inférieurs à 257 est la suivante :")
-results = nombre_prime_mersenne()
-for cle, valeur in results.items():
-	print cle	
-	#print("p={} : Mp={} \t".format(cle, valeur))
+results = mersennePrimes(primeNumbers)
+for p, mP in results:
+	print("M_{}={}".format(p, mP))
+
+print('\n\n########################## Question 3.3.2 ##########################\n')
+data = [41, 47]
+for p in data:
+	print("Décomposition de M_{} en produit de facteurs premiers : {}".format(p, factor(mersenneNumber(p))))
+
+########################## Question 3.4 ##########################
+print('\n\n########################## Question 3.4 ##########################\n')
+
+print('\n\n########################## Question 3.4.1 ##########################\n')
+for n in range(0, 14):
+	print("Nombre de nombres premiers inférieurs ou égaux à 10^{} : {}".format(n, prime_pi(10^n)))
+
+print('\n\n########################## Question 3.4.2 ##########################\n')
+abscissas = [10^n for n in range(1, 14)]
+
+points1 = [(n, prime_pi(n)) for n in abscissas]
+points2 = [(n, xDividedByLnX(n)) for n in abscissas]
+chart1 = line(points1, color='#104E8B', legend_label="pi(n)") + line(points2, color="#CD6889", legend_label="n/ln(n)")
+show(chart1)
+
+print('\n\n########################## Question 3.4.3 ##########################\n')
+points3 = [(n, piTimesLnXDividedByX(n)) for n in abscissas]
+chart2 = line(points3, color='#6E8B3D', legend_label="pi(n) * ln(n)/n")
+show(chart2)
 
 ########################## Question 4.1 ##########################
 print('\n\n########################## Question 4.1 ##########################\n')
