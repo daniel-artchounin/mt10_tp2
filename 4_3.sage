@@ -23,7 +23,7 @@ def modularIterativeExponentiation(x, n, N):
 def modularRecursiveExponentiation(x, n, N):	
 	"""This function returns the modular exponentiation.
 
-	This function uses an recursive dichotomic algorithm.
+	This function uses a recursive dichotomic algorithm.
 	It returns the remainder of, the integer x raised to 
 	the nth power, x^n, divided by a positive integer N.
 	n should be a positive integer.

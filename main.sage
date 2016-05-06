@@ -150,7 +150,7 @@ bases = [-5, 7]
 exponents = [-64, -15, 0, 13, 79]
 for x in bases:
 	for n in exponents:
-		print("{}^({}) = {}".format(x, n, x^(n)))
+		print("({})^({}) = {}".format(x, n, x^(n)))
 		print("iterativePow({}, {}) = {}".format(x, n, iterativePow(x, n)))
 		print("recursivePow({}, {}) = {}".format(x, n, recursivePow(x, n)))
 		print("")
@@ -161,10 +161,28 @@ bases = [-5, 7]
 exponents = [-64, -15, 0, 13, 79]
 for x in bases:
 	for n in exponents:
-		print("{}^({}) = {}".format(x, n, x^(n)))
+		print("({})^({}) = {}".format(x, n, x^(n)))
 		print("iterativeDichotomicPow({}, {}) = {}".format(x, n, iterativeDichotomicPow(x, n)))
 		print("recursiveDichotomicPow({}, {}) = {}".format(x, n, recursiveDichotomicPow(x, n)))
 		print("")
+
+########################## Comparaisons entre 4.2 et 4.3 ##########################
+print('########################## Comparaisons entre 4.2 et 4.3 ##########################\n')
+data = {5:97856, 7:57432}
+for key in data:
+	print("Temps de calcul de iterativePow({}, {})".format(key,data[key]))
+	timeit('iterativePow({}, {})'.format(key, data[key]))
+	print("Temps de calcul de iterativeDichotomicPow({}, {})".format(key,data[key]))
+	timeit('iterativeDichotomicPow({}, {})'.format(key, data[key]))
+	print("")
+
+data = {6:148, 5:976}
+for key in data:
+	print("Temps de calcul de recursivePow({}, {})".format(key,data[key]))
+	timeit('recursivePow({}, {})'.format(key, data[key]))
+	print("Temps de calcul de recursiveDichotomicPow({}, {})".format(key,data[key]))
+	timeit('recursiveDichotomicPow({}, {})'.format(key, data[key]))
+	print("")
 
 ########################## Question 4.3 ##########################
 print('\n\n########################## Question 4.3 ##########################\n')
@@ -174,11 +192,10 @@ moduli = [7, 17]
 for modulus in moduli:
 	for x in bases:
 		for n in exponents:		
-			print("mod({}^({}), {}) = {}".format(x, n, modulus, mod(x^(n), modulus)))
+			print("mod(({})^({}), {}) = {}".format(x, n, modulus, mod(x^(n), modulus)))
 			print("modularIterativeExponentiation({}, {}, {}) = {}".format(x, n, modulus, modularIterativeExponentiation(x, n, modulus)))
 			print("modularRecursiveExponentiation({}, {}, {}) = {}".format(x, n, modulus, modularRecursiveExponentiation(x, n, modulus)))
 			print("")
-
 
 ########################## Question 4.4 ##########################
 print('\n\n########################## Question 4.4 ##########################\n')
