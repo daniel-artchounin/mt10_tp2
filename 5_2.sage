@@ -1,6 +1,7 @@
 from sage.crypto.util import bin_to_ascii
 
 def numerise(message, N):
+	"""Encoding of a message."""
 	S3 = BinaryStrings()
 	binaryMessage = S3.encoding(message)
 	# print(binaryMessage) # Test
@@ -9,26 +10,29 @@ def numerise(message, N):
 	numberOfSameLengthPackets = binaryMessageLength//packetLength
 	lengthOfTheLastPacket = binaryMessageLength%packetLength
 	# print(lengthOfTheLastPacket) # Test
-	numerization = []
+	digitization = []
 	for i in range(numberOfSameLengthPackets):
 		packet = str(binaryMessage[i*packetLength:i*packetLength+packetLength])
 		packet = int(str(packet), base=2)
-		numerization.append(packet)
+		digitization.append(packet)
 	if lengthOfTheLastPacket != 0:
 		packet = str(binaryMessage[numberOfSameLengthPackets*packetLength:])
 		packet = int(str(packet), base=2)
-		numerization.append(packet)
-	return numerization, lengthOfTheLastPacket
+		digitization.append(packet)
+	digitization.append(lengthOfTheLastPacket)
+	return digitization
 
-def alphabetise(integersList, N, lengthOfTheLastPacket):	
+def alphabetise(integersList, N):
+	"""Decoding of a message."""
 	numberOfInts = len(integersList)
 	S3 = BinaryStrings()
 	binaryMessage = ""
+	lengthOfTheLastPacket = integersList[-1]
 	packetLength = floor(ln(N)/ln(2)) # Computation of the logarithm base 2	
 	if lengthOfTheLastPacket != 0:
-		numberOfSameLengthPackets = numberOfInts - 1
+		numberOfSameLengthPackets = numberOfInts - 2
 	else:
-		numberOfSameLengthPackets = numberOfInts
+		numberOfSameLengthPackets = numberOfInts - 1
 	for number in integersList[:numberOfSameLengthPackets]:
 		bin = str(Integer(number).binary())		
 		while len(bin) != packetLength:
