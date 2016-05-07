@@ -21,24 +21,24 @@ def protocole1Decrypting(m2C, s2C, NA, eA, NB, dB, NC) :
 def protocole2Encrypting(m1, NA, dA, NB, eB, NC) :
 	"""Encrypting of the second protocole."""	
 	if NA > NB:			
-			m1C = numerise(m1, NC)
-			m2C = chiffrement(m1C, eB, NB)
-			m3C = chiffrement(m2C, dA, NA)		
+		m1C = numerise(m1, NC)
+		m2C = chiffrement(m1C, eB, NB)
+		m3C = chiffrement(m2C, dA, NA)		
 	elif NA < NB:		
-			m1C = numerise(m1, NC)
-			m2C = chiffrement(m1C, dA, NA)
-			m3C = chiffrement(m2C, eB, NB)
+		m1C = numerise(m1, NC)
+		m2C = chiffrement(m1C, dA, NA)
+		m3C = chiffrement(m2C, eB, NB)
 	else:
 		raise("Value error: NA and NB couldn't be equals")
 	return m3C
 
 def protocole2Decrypting(m3C, NA, eA, NB, dB, NC) :
 	"""Decrypting of the second protocole."""	
-	if Na > Nb :
+	if Na > Nb:
 		m2C = dechiffrement(m3C, eA, NA)
 		m1C = dechiffrement(m2C, dB, NB)
 		m1 = alphabetise(m1C, NC)
-	elif Na < Nb :
+	elif Na < Nb:
 		m2C = dechiffrement(m3C, dB, NB)
 		m1C = dechiffrement(m2C, eA, NA)
 		m1 = alphabetise(m1C, NC)
