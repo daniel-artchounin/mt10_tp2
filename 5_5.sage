@@ -1,3 +1,6 @@
+load("5_2.sage")
+load("5_4.sage")
+
 def protocole1Encrypting(m1, s1, NA, dA, NB, eB, NC) :
 	"""Encrypting of the first protocole."""	
 	m1C = numerise(m1, NC)
@@ -34,11 +37,11 @@ def protocole2Encrypting(m1, NA, dA, NB, eB, NC) :
 
 def protocole2Decrypting(m3C, NA, eA, NB, dB, NC) :
 	"""Decrypting of the second protocole."""	
-	if Na > Nb:
+	if NA > NB:
 		m2C = dechiffrement(m3C, eA, NA)
 		m1C = dechiffrement(m2C, dB, NB)
 		m1 = alphabetise(m1C, NC)
-	elif Na < Nb:
+	elif NA < NB:
 		m2C = dechiffrement(m3C, dB, NB)
 		m1C = dechiffrement(m2C, eA, NA)
 		m1 = alphabetise(m1C, NC)

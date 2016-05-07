@@ -4,4 +4,4 @@ def chiffrement(message, publicKey, N) :
 
 def dechiffrement(message, privateKey, N) :
 	"""Decrypting of a message."""	
-	return chiffrement(message, privateKey, modulo)
+	return chiffrement(message, privateKey, N)
