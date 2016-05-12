@@ -1,2 +1,3 @@
-crypto.pdf
-TP2_RSA.pdf
+*.pdf
+*.png
+test.sage
