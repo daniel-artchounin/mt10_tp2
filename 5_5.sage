@@ -2,9 +2,6 @@ load("5_2.sage")
 load("5_3.sage")
 load("5_4.sage")
 
-cle_alice = cleRSA(5)
-cle_bob = cleRSA(5)
-
 def protocole1Encrypting(m1, s1, NA, dA, NB, eB, NC) :
 	"""Encrypting of the first protocole."""	
 	m1C = numerise(m1, NC)
@@ -53,5 +50,3 @@ def protocole2Decrypting(m3C, NA, eA, NB, dB, NC) :
 	else:
 		raise("Value error: NA and NB couldn't be equals")
 	return m1
-
-

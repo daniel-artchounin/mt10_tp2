@@ -8,6 +8,7 @@ load("4_1.sage")
 load("4_2.sage")
 load("4_3.sage")
 load("4_4.sage")
+load("5_3.sage")
 load("5_5.sage")
 
 ########################## Question 1.1 ##########################
@@ -72,10 +73,10 @@ print("Nombre de chiffres de 100!! en base 2 : {}".format(nbDigitsFactBase2(fact
 print('\n\n########################## Question 2 ##########################\n')
 data = [5, 10, 25, 50, 500, 1000]
 for i in data:
-	gcd, iterations = euclideanAlgorithm(fibonacci(i + 1), fibonacci(i))
-	print("PGCD(fibonacci({}), fibonacci({})) = {} : obtenu en {} itération(s) via l'algorithme d'Euclide.".format(i + 1, i, gcd, iterations))
-gcd, iterations = euclideanAlgorithm(29753, 4578)
-print("PGCD({}, {}) = {} : obtenu en {} itération(s) via l'algorithme d'Euclide.".format(29753, 4578, gcd, iterations))
+	gcDiv, iterations = euclideanAlgorithm(fibonacci(i + 1), fibonacci(i))
+	print("PGCD(fibonacci({}), fibonacci({})) = {} : obtenu en {} itération(s) via l'algorithme d'Euclide.".format(i + 1, i, gcDiv, iterations))
+gcDiv, iterations = euclideanAlgorithm(29753, 4578)
+print("PGCD({}, {}) = {} : obtenu en {} itération(s) via l'algorithme d'Euclide.".format(29753, 4578, gcDiv, iterations))
 data = [9, 8]
 for i in data:
 	print("fibonacci({}) = {}".format(i, fibonacci(i)))
@@ -233,28 +234,74 @@ for n in indexes:
 	print("fibonacciUsingRecursiveDichotomicPow({}) = {}".format(n, fibonacciUsingRecursiveDichotomicPow(n)))
 	print("")
 
+# Mis en commentaires car il faut patienter plusieurs minutes pour obtenir une clé à 2048 bits...
+########################## Question 5.3 ##########################
+# print('\n\n########################## Question 5.3 ##########################\n')
+# n, e, d = cleRSA2048()
+# print("Génération de la clé à 2048 bits : ")
+# print("n = {}".format(n))
+# print("e = {}".format(e))
+# print("d = {}".format(d))
 
 ########################## Question 5.5 ##########################
+print('\n\n########################## Question 5.5 ##########################\n')
 print('\n\n########################## Protocole 1 ##########################\n')
-m2C = protocole1Encrypting("Rendez-vous demain vers 14 heures", "al94f60", 15, cle_alice[2], 10, cle_bob[1], 3)[0]
-s2C = protocole1Encrypting("Rendez-vous demain vers 14 heures", "al94f60", 15, cle_alice[2], 10, cle_bob[1], 3)[1]
-print ('m2c : \n')
-print m2C
-print ('s2c : \n')
-print s2C
+cle_alice = cleRSA(5)
+cle_bob = cleRSA(5)
+nc = min(cle_alice[0], cle_bob[0])/4
 
-m1 = protocole1Decrypting(m2C, s2C, 15, cle_alice[1], 10, cle_bob[2], 3)[0]
-s1 = protocole1Decrypting(m2C, s2C, 15, cle_alice[1], 10, cle_bob[2], 3)[1]
-print ('m1 : \n')
-print m1
-print ('s1 : \n')
-print s1
+m1 = "'Rendez-vous demain vers 14 heures'"
+s1 = "'al94f60'"
+print("m1 = {}".format(m1))
+print("s1 = {}\n".format(s1))
+
+print("na = {}".format(cle_alice[0]))
+print("nb = {}".format(cle_bob[0]))
+print("nc = {}\n".format(nc))
+
+m2C, s2C = protocole1Encrypting(m1, s1, cle_alice[0], cle_alice[2], cle_bob[0], cle_bob[1], nc)
+print("Alice chiffre le message avec la clé publique de Bob...")
+print("Alice chiffre sa signature avec sa clé privée...")
+print("m2c = {}".format(m2C))
+print("s2c = {}\n".format(s2C))
+
+print("Le message et la signature cryptés (m2c et s2c) sont envoyé à Bob...")
+
+m1, s1 = protocole1Decrypting(m2C, s2C, cle_alice[0], cle_alice[1], cle_bob[0], cle_bob[2], nc)
+print("Bob déchiffre le message avec sa clé privée...")
+print("Bob déchiffre la signature avec la clé publique d'Alice...")
+
+print("m1 = '{}'".format(m1))
+print("s1 = '{}'".format(s1))
 
 print('\n\n########################## Protocole 2 ##########################\n')
+cle_alice = cleRSA(5)
+cle_bob = cleRSA(5)
+nc = min(cle_alice[0], cle_bob[0])/4
 
-m3C = protocole2Encrypting("Rendez-vous demain vers 14 heures", 15, cle_alice[2], 10, cle_bob[1], 3)
-print ('m3c : \n')
-print m3C
-m1 = protocole2Decrypting(m3C, 15, cle_alice[1], 10, cle_bob[2], 3)
-print ('m1 : \n')
-print m1
+m1 = "Rendez-vous demain vers 14 heures"
+print("m1 = '{}'\n".format(m1))
+
+print("na = {}".format(cle_alice[0]))
+print("nb = {}".format(cle_bob[0]))
+print("nc = {}\n".format(nc))
+
+m3C = protocole2Encrypting("Rendez-vous demain vers 14 heures", cle_alice[0], cle_alice[2], cle_bob[0], cle_bob[1], 3)
+if cle_alice[0] > cle_bob[0]:
+	print("Alice chiffre une première fois le message avec la clé publique de Bob...")
+	print("Alice chiffre une deuxième fois le message déjà chiffré (une fois) avec sa clé privée...")
+else:
+	print("Alice chiffre une première fois le message avec sa clé privée...")
+	print("Alice chiffre une deuxième fois le message déjà chiffré (une fois) avec la clé publique de Bob...")
+
+print("m3C = {}\n".format(m3C))
+
+m1 = protocole2Decrypting(m3C, cle_alice[0], cle_alice[1], cle_bob[0], cle_bob[2], 3)
+print("Alice crypte le message avec la clé publique de Bob...")
+if cle_alice[0] > cle_bob[0]:
+	print("Bob déchiffre une première fois le message chiffré avec la clé publique d'Alice...")
+	print("Bob déchiffre une deuxième fois le message déjà déchiffré (une fois) avec sa clé privée...")
+else:
+	print("Bob déchiffre une première fois le message chiffré avec sa clé privée...")
+	print("Bob déchiffre une deuxième fois le message déjà déchiffré (une fois) avec la clé publique d'Alice...")
+print("m1 = '{}'".format(m1))
