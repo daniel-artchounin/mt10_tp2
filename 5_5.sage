@@ -25,15 +25,6 @@ def protocole1Decrypting(m2C, s2C, NA, eA, NB, dB, NC) :
 	
 	return m1, s1
 
-m2C = protocole1Encrypting("Rendez-vous demain vers 14 heures", "al94f60", 15, cle_alice[2], 10, cle_bob[1], 3)[0]
-s2C = protocole1Encrypting("Rendez-vous demain vers 14 heures", "al94f60", 15, cle_alice[2], 10, cle_bob[1], 3)[1]
-print m2C
-print s2C
-
-m1 = protocole1Decrypting(m2C, s2C, 15, cle_alice[1], 10, cle_bob[2], 3)[0]
-s1 = protocole1Decrypting(m2C, s2C, 15, cle_alice[1], 10, cle_bob[2], 3)[1]
-print m1
-print s1
 
 def protocole2Encrypting(m1, NA, dA, NB, eB, NC) :
 	"""Encrypting of the second protocole."""	
@@ -63,7 +54,4 @@ def protocole2Decrypting(m3C, NA, eA, NB, dB, NC) :
 		raise("Value error: NA and NB couldn't be equals")
 	return m1
 
-m3C = protocole2Encrypting("Rendez-vous demain vers 14 heures", 15, cle_alice[2], 10, cle_bob[1], 3)
-print m3C
-m1 = protocole2Decrypting(m3C, 15, cle_alice[1], 10, cle_bob[2], 3)
-print m1
+

@@ -14,3 +14,4 @@ def cleRSA(m):
 	bezout = xgcd(e, phi)
 	d = Integer(mod(bezout[1], phi))
 	return n, e, d
+

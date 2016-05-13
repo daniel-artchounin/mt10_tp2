@@ -8,6 +8,7 @@ load("4_1.sage")
 load("4_2.sage")
 load("4_3.sage")
 load("4_4.sage")
+load("5_5.sage")
 
 ########################## Question 1.1 ##########################
 print('########################## Question 1.1 ##########################\n')
@@ -231,3 +232,29 @@ for n in indexes:
 	print("fibonacciUsingExponentiation({}) = {}".format(n, fibonacciUsingExponentiation(n)))
 	print("fibonacciUsingRecursiveDichotomicPow({}) = {}".format(n, fibonacciUsingRecursiveDichotomicPow(n)))
 	print("")
+
+
+########################## Question 5.5 ##########################
+print('\n\n########################## Protocole 1 ##########################\n')
+m2C = protocole1Encrypting("Rendez-vous demain vers 14 heures", "al94f60", 15, cle_alice[2], 10, cle_bob[1], 3)[0]
+s2C = protocole1Encrypting("Rendez-vous demain vers 14 heures", "al94f60", 15, cle_alice[2], 10, cle_bob[1], 3)[1]
+print ('m2c : \n')
+print m2C
+print ('s2c : \n')
+print s2C
+
+m1 = protocole1Decrypting(m2C, s2C, 15, cle_alice[1], 10, cle_bob[2], 3)[0]
+s1 = protocole1Decrypting(m2C, s2C, 15, cle_alice[1], 10, cle_bob[2], 3)[1]
+print ('m1 : \n')
+print m1
+print ('s1 : \n')
+print s1
+
+print('\n\n########################## Protocole 2 ##########################\n')
+
+m3C = protocole2Encrypting("Rendez-vous demain vers 14 heures", 15, cle_alice[2], 10, cle_bob[1], 3)
+print ('m3c : \n')
+print m3C
+m1 = protocole2Decrypting(m3C, 15, cle_alice[1], 10, cle_bob[2], 3)
+print ('m1 : \n')
+print m1
